@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inventory Management System</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-
     <div class="container">
         <header>
             <h1><i class="fas fa-boxes"></i> Inventory Management System</h1>
@@ -16,10 +15,10 @@
                 <button id="addItemBtn" class="btn-primary">
                     <i class="fas fa-plus"></i> Add New Item
                 </button>
-            </div>
-            <div class="search-container">
-                <input type="text" id="searchInput" placeholder="Search items...">
-                <button id="searchBtn"><i class="fas fa-search"></i></button>
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Search items...">
+                    <button id="searchBtn"><i class="fas fa-search"></i></button>
+                </div>
             </div>
         </header>
 
@@ -34,7 +33,6 @@
                             <option value="details">Product Details</option>
                         </select>
                     </div>
-
                     <div class="filter-group">
                         <label for="sortBy">Sort By:</label>
                         <select id="sortBy">
@@ -49,7 +47,6 @@
                         </select>
                     </div>
                 </div>
-
                 <div class="inventory-table-container">
                     <table id="inventoryTable">
                         <thead>
@@ -68,82 +65,73 @@
                     </table>
                 </div>
             </div>
-
-            <!-- Add Item Modal -->
-            <div id="addModal" class="modal">
-                <div class="modal-content">
-                    <span class="close" id="closeAddModal">&times;</span>
-                    <h2>Add New Item</h2>
-                    <form id="addItemForm">
-                        <!--
-                        <div class="form-group">
-                            <label for="itemImage">Product Image</label>
-                            <input type="file" id="itemImage" accept="image/*">
-                            <div id="imagePreview" class="image-preview"></div>
-                        </div>
-                        -->
-                        <div class="form-group">
-                            <label for="itemName">Product Name</label>
-                            <input type="text" id="itemName" placeholder="Enter product name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="itemDetails">Product Details</label>
-                            <textarea id="itemDetails" placeholder="Enter product details" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="itemQuantity">Quantity</label>
-                            <input type="number" id="itemQuantity" placeholder="Enter quantity" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="itemPrice">Price</label>
-                            <input type="number" id="itemPrice" placeholder="Enter price" step="0.01" required>
-                        </div>
-                        <button type="submit" class="btn-primary">Add Item</button>
-                    </form>
-                </div>
-            </div>
-
-            <!-- Edit Item Modal -->
-            <div id="editModal" class="modal">
-                <div class="modal-content">
-                    <span class="close" id="closeEditModal">&times;</span>
-                    <h2>Edit Item</h2>
-                    <form id="editItemForm">
-                        <input type="hidden" id="editItemId">
-                        <!--
-                        <div class="form-group">
-                            <label for="editItemImage">Product Image</label>
-                            <input type="file" id="editItemImage" accept="image/*">
-                            <div id="editImagePreview" class="image-preview"></div>
-                        </div>
-                        -->
-                        <div class="form-group">
-                            <label for="editItemName">Product Name</label>
-                            <input type="text" id="editItemName" placeholder="Enter product name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="editItemDetails">Product Details</label>
-                            <textarea id="editItemDetails" placeholder="Enter product details" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="editItemQuantity">Quantity</label>
-                            <input type="number" id="editItemQuantity" placeholder="Enter quantity" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="editItemPrice">Price</label>
-                            <input type="number" id="editItemPrice" placeholder="Enter price" step="0.01" required>
-                        </div>
-                        <button type="submit" class="btn-primary">Save Changes</button>
-                    </form>
-                </div>
-            </div>
-
         </main>
 
+        <!-- Add Item Modal -->
+        <div id="addModal" class="modal">
+            <div class="modal-content">
+                <span class="close" id="closeAddModal">&times;</span>
+                <h2>Add New Item</h2>
+                <form id="addItemForm">
+                    <div class="form-group">
+                        <label for="itemImage">Product Image</label>
+                        <input type="file" id="itemImage" accept="image/*" required>
+                        <div id="imagePreview" class="image-preview"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="itemName">Product Name</label>
+                        <input type="text" id="itemName" placeholder="Enter product name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="itemDetails">Product Details</label>
+                        <textarea id="itemDetails" placeholder="Enter product details" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="itemQuantity">Quantity</label>
+                        <input type="number" id="itemQuantity" placeholder="Enter quantity" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="itemPrice">Price</label>
+                        <input type="number" id="itemPrice" placeholder="Enter price" step="0.01" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Add Item</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Edit Item Modal -->
+        <div id="editModal" class="modal">
+            <div class="modal-content">
+                <span class="close" id="closeEditModal">&times;</span>
+                <h2>Edit Item</h2>
+                <form id="editItemForm">
+                    <input type="hidden" id="editItemId">
+                    <div class="form-group">
+                        <label for="editItemImage">Product Image</label>
+                        <input type="file" id="editItemImage" accept="image/*">
+                        <div id="editImagePreview" class="image-preview"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="editItemName">Product Name</label>
+                        <input type="text" id="editItemName" placeholder="Enter product name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editItemDetails">Product Details</label>
+                        <textarea id="editItemDetails" placeholder="Enter product details" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="editItemQuantity">Quantity</label>
+                        <input type="number" id="editItemQuantity" placeholder="Enter quantity" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editItemPrice">Price</label>
+                        <input type="number" id="editItemPrice" placeholder="Enter price" step="0.01" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Save Changes</button>
+                </form>
+            </div>
+        </div>
     </div>
-
     <script src="script.js"></script>
-
 </body>
-</html>
-cdnjs.cloudflare.com
+</html> 

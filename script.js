@@ -1,3 +1,5 @@
+const inventory = JSON.parse(localStorage.getItem('inventory')) || [];
+
 // DOM Elements
 const searchInput = document.getElementById('searchInput');
 
@@ -9,7 +11,7 @@ const addItemBtn = document.getElementById('addItemBtn');
 const searchBy = document.getElementById('searchBy');
 const sortBy = document.getElementById('sortBy');
 
-// Modals
+//Modals
 const addModal = document.getElementById('addModal');
 const closeAddModal = document.getElementById('closeAddModal');
 const closeEditModal = document.getElementById('closeEditModal');
@@ -19,6 +21,7 @@ const editModal = document.getElementById('editModal');
 const addItemForm = document.getElementById('addItemForm');
 const editItemForm = document.getElementById('editItemForm');
 
+// Table
 const inventoryBody = document.getElementById('inventoryBody');
 
 // Add Inputs
@@ -35,7 +38,9 @@ const editItemDetails = document.getElementById('editItemDetails');
 const editItemPrice = document.getElementById('editItemPrice');
 const editItemQuantity = document.getElementById('editItemQuantity');
 
-// Event listeners
+
+// Event Listeners
+
 // input
 // click
 // onmousedown
@@ -44,76 +49,78 @@ const editItemQuantity = document.getElementById('editItemQuantity');
 // submit
 
 // Inputs
-//searchInput.addEventListener('input', handleSearchInput);
+// searchInput.addEventListener('input', handleSearchInput);
 
 // Buttons
 addItemBtn.addEventListener('click', handleAddItemBtnClick);
 // searchButton.addEventListener('click', handleSearchButtonClick);
 
-// Dropdowns
-// searchBy.addEventListener('change', handleSearchByChange);
+// // Dropdowns
 // sortBy.addEventListener('change', handleSortByChange);
 
-// Forms
+// // Forms
 addItemForm.addEventListener('submit', handleAddItemFormSubmit);
 // editItemForm.addEventListener('submit', handleEditItemFormSubmit);
 
-// Images
+// // Images
 // itemImage.addEventListener('change', handleItemImageChange);
 // editItemImage.addEventListener('change', handleEditItemImageChange);
 
 // Modals
+// addModal.addEventListener('click', handleAddModalClick);
 closeAddModal.addEventListener('click', handleCloseAddModalClick);
 // closeEditModal.addEventListener('click', handleCloseEditModalClick);
-const inventory = JSON.parse(localStorage.getItem
-    ('inventory',)) || [];
 
 // Functions
-function handleAddItemBtnClick() {
+function handleAddItemBtnClick(){
     addModal.style.display = "block";
-    addModal.style.display = "flex";
-}
+    addModal.style.display = "flex"
 
-function handleCloseAddModalClick() {
+};
+
+function handleCloseAddModalClick(){
     addModal.style.display = "none";
 }
 
-function handleAddItemFormSubmit(e) {
-    console.log(e);
+function handleAddItemFormSubmit(e){
     e.preventDefault();
     const newItem = {
         id: Date.now(),
-        name: itemName.value,
+        name:itemName.value,
         details: itemDetails.value,
         quantity: itemQuantity.value,
         price: itemPrice.value,
-        dateAdded: new Date().toISOString(),
+        dateAdded: new Date().toISOString(), 
     }
+
     inventory.push(newItem)
-     localStorage.setItem('inventory', JSON.stringify(inventory))
+    // Store the items in local storage
+    localStorage.setItem('inventory', JSON.stringify(inventory))
     
-
+    // Close the modal 
     handleCloseAddModalClick();
-        itemName.value = '';
-        itemDetails.value='';
-        itemQuantity.value='';
-        itemPrice.value='';
-        itemImage.value='';
+
+    // Empty the form by manually setting the values to empty strings
+    // itemName.value = '';
+    // itemDetails.value = '';
+    // itemQuantity.value = '';
+    // itemPrice.value = '';
+    // itemImage.value = '';
+
+    // Emmpty the form using built in method
+    // addItemForm.reset()
+ 
 }
-    console.log(inventoryBody)
+console.log(inventoryBody)
 
-    console.log(inventory)
-        
-    inventoryBody.innerHTML = 
-        `<tr>
-            <td>${inventory.id}</td>
-            <td>${inventory.name}</td>
-            <td>${inventory.details}</td>
-            <td>${inventory.quantity}</td>
-            <td>${inventory.price}</td>
-            <td>${inventory.dateAdded}</td>
-        </tr>`;
 
+
+console.log(inventory)
+// Concatenation using + operator
+inventoryBody.innerHTML = '<tr><td>' + inventory.id +'</td><td>Details</td></tr>';
+
+// Template literal 
+inventoryBody.innerHTML = `<tr><td>${inventory.id}</td><td>${inventory.name}</td><td>${inventory.details}</td><td>${inventory.quantity}</td><td>${inventory.price}</td><td>${inventory.dateAdded}</td></tr>`;
 
 // display table with existing products
 // add product
