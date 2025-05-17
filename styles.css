@@ -458,3 +458,25 @@ th:nth-child(7), td:nth-child(7) { width: 10%; }   /* Actions */
         padding: 10px;
     }
 }
+.icon-only {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .icon-only img {
+    height: 24px;
+    width: 24px;
+    position: absolute;
+    margin-left: -100px;
+  }
+  .edit-button{
+    position: absolute;
+    margin-left: 100px;
+    margin-top: -12px;
+  }
+    .delete-button{
+    position: absolute;
+    margin-left: 130px;
+    margin-top: -12px;
+  }
